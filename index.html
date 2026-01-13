@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dmente Digital | Agencia de Crecimiento Exponencial</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #4f46e5, #9333ea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-pattern {
+            background-color: #ffffff;
+            background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            z-index: 100;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #128c7e;
+        }
+
+        .spinner {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border-left-color: #fff;
+            animation: spin 1s ease infinite;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <!-- Botón WhatsApp Flotante Actualizado con el nuevo número -->
+    <a href="https://api.whatsapp.com/send?phone=3246401103&text=Hola%20DMENTE%20Quiero%20una%20asesoria" target="_blank" class="whatsapp-float" title="Habla con nosotros">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Navegación -->
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0 flex items-center gap-2">
+                    <img src="1.png" alt="Dmente Digital Logo" class="h-14 w-auto object-contain" onerror="this.src='https://via.placeholder.com/150x50?text=Dmente+Digital'">
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#servicios" class="text-slate-600 hover:text-indigo-600 font-medium font-semibold">Servicios</a>
+                    <a href="#contacto" class="bg-indigo-600 text-white px-6 py-3 rounded-full font-bold hover:bg-indigo-700 transition-all shadow-lg">
+                        Auditoría Gratuita
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 hero-pattern overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h1 class="text-5xl md:text-7xl font-extrabold text-slate-900 mb-6 tracking-tight leading-tight">
+                Escala tu negocio con <span class="gradient-text">Marketing Dmente</span>.
+            </h1>
+            <p class="text-xl text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed">
+                Transformamos clics en clientes reales. Landing Pages, Bots y Automatizaciones de alto impacto para negocios que piensan en grande en este 2026.
+            </p>
+            <a href="#contacto" class="px-8 py-4 bg-indigo-600 text-white rounded-xl font-bold text-lg hover:bg-indigo-700 shadow-2xl transition-all inline-block transform hover:scale-105">
+                Empezar Ahora
+            </a>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <div class="p-8 bg-slate-50 rounded-2xl border border-slate-100 card-hover">
+                    <i class="fas fa-magic text-indigo-600 text-3xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Landing Pages</h3>
+                    <p class="text-slate-600">Diseño enfocado 100% en conversión de leads con tecnología de punta.</p>
+                </div>
+                <div class="p-8 bg-slate-50 rounded-2xl border border-slate-100 card-hover">
+                    <i class="fas fa-robot text-purple-600 text-3xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Automatización</h3>
+                    <p class="text-slate-600">Bots inteligentes de IA que atienden y venden 24/7 sin errores.</p>
+                </div>
+                <div class="p-8 bg-slate-50 rounded-2xl border border-slate-100 card-hover">
+                    <i class="fas fa-bullhorn text-blue-600 text-3xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Social Ads</h3>
+                    <p class="text-slate-600">Estrategias de pauta avanzada para inundar tu CRM de prospectos calificados.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulario Conectado -->
+    <section id="contacto" class="py-24 bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-4xl font-bold mb-6">Auditoría Gratis 2026</h2>
+                    <p class="text-slate-400 mb-8 text-lg">Al completar este formulario, tus datos se sincronizan automáticamente con nuestro equipo de estrategia para agendar tu consultoría sin costo.</p>
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-indigo-500/20 rounded-full flex items-center justify-center">
+                            <i class="fas fa-check text-indigo-400"></i>
+                        </div>
+                        <p class="text-slate-300 italic">"La mejor decisión para automatizar mi flujo de ventas" - Cliente 2026.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 md:p-10 rounded-3xl shadow-2xl text-slate-900">
+                    <form id="googleForm" action="https://docs.google.com/forms/d/e/1FAIpQLSdUmSYZRI8-OqpeFxvWrj712fxtvox0aUQatpk3WV3xwxu6HA/formResponse" method="POST" target="hidden_iframe" class="space-y-4">
+                        
+                        <!-- IDs SINCRONIZADOS CON TU GOOGLE FORM -->
+                        <div>
+                            <label class="block text-sm font-bold text-slate-500 mb-1">Nombre</label>
+                            <input type="text" name="entry.2005620554" required placeholder="Tu nombre" class="w-full px-4 py-3 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-indigo-500">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-bold text-slate-500 mb-1">Email</label>
+                            <input type="email" name="entry.1045781291" required placeholder="email@ejemplo.com" class="w-full px-4 py-3 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-indigo-500">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-bold text-slate-500 mb-1">WhatsApp</label>
+                            <input type="tel" name="entry.1166974658" required placeholder="+57 ..." class="w-full px-4 py-3 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-indigo-500">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-bold text-slate-500 mb-1">Servicio de Interés</label>
+                            <select name="entry.839337160" class="w-full px-4 py-3 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-indigo-500 bg-white">
+                                <option value="Landing Page/Web">Landing Page / Web</option>
+                                <option value="Manejo de Redes">Manejo de Redes</option>
+                                <option value="Bots y Automatizacion">Bots y Automatización</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" id="submitBtn" class="w-full py-4 bg-indigo-600 text-white rounded-xl font-bold text-lg hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-200">
+                            <span id="btnText">Agendar mi Auditoría</span>
+                        </button>
+                    </form>
+                    
+                    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { showSuccess(); }"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-50 py-16 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <img src="1.png" alt="Dmente Digital" class="h-12 mx-auto mb-6 object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all" onerror="this.src='https://via.placeholder.com/150x50?text=Dmente+Digital'">
+            <div class="flex justify-center space-x-6 mb-8">
+                <a href="#" class="text-slate-400 hover:text-indigo-600 transition-colors text-2xl"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-slate-400 hover:text-indigo-600 transition-colors text-2xl"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="text-slate-400 hover:text-indigo-600 transition-colors text-2xl"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p class="text-slate-400 text-sm">© 2026 Dmente Digital. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Modal Éxito -->
+    <div id="successModal" class="modal">
+        <div class="bg-white p-10 rounded-3xl max-w-sm text-center shadow-2xl mx-4 border-t-4 border-indigo-600">
+            <div class="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                <i class="fas fa-check text-3xl"></i>
+            </div>
+            <h3 class="text-2xl font-bold mb-2">¡Datos Enviados!</h3>
+            <p class="text-slate-600 mb-6">Tu información ya está en nuestra base de datos. Un estratega dmente te contactará por WhatsApp en breve.</p>
+            <button onclick="location.reload()" class="w-full py-3 bg-indigo-600 text-white rounded-xl font-bold hover:bg-indigo-700 transition-colors">Entendido</button>
+        </div>
+    </div>
+
+    <script>
+        let submitted = false;
+        const form = document.getElementById('googleForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+
+        form.onsubmit = function() {
+            submitBtn.disabled = true;
+            btnText.innerHTML = '<span class="spinner"></span> Sincronizando...';
+            submitted = true;
+            return true;
+        };
+
+        function showSuccess() {
+            document.getElementById('successModal').style.display = 'flex';
+        }
+    </script>
+</body>
+</html>
