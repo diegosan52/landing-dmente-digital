@@ -165,27 +165,26 @@
                 </div>
 
                 <div class="bg-white p-8 md:p-10 rounded-3xl shadow-2xl text-slate-900">
-                    <!-- Formulario ahora manejado por JavaScript para mayor seguridad en el envío -->
                     <form id="googleForm" class="space-y-4">
                         
                         <div>
                             <label class="block text-sm font-bold text-slate-500 mb-1">Nombre</label>
-                            <input type="text" id="nombre" name="entry.2005620554" required placeholder="Tu nombre" class="w-full px-4 py-3 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-indigo-500">
+                            <input type="text" id="nombre" required placeholder="Tu nombre" class="w-full px-4 py-3 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-indigo-500">
                         </div>
                         
                         <div>
                             <label class="block text-sm font-bold text-slate-500 mb-1">Email</label>
-                            <input type="email" id="email" name="entry.1045781291" required placeholder="email@ejemplo.com" class="w-full px-4 py-3 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-indigo-500">
+                            <input type="email" id="email" required placeholder="email@ejemplo.com" class="w-full px-4 py-3 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-indigo-500">
                         </div>
                         
                         <div>
                             <label class="block text-sm font-bold text-slate-500 mb-1">WhatsApp</label>
-                            <input type="tel" id="whatsapp" name="entry.1166974658" required placeholder="+57 ..." class="w-full px-4 py-3 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-indigo-500">
+                            <input type="tel" id="whatsapp" required placeholder="+57 ..." class="w-full px-4 py-3 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-indigo-500">
                         </div>
 
                         <div>
                             <label class="block text-sm font-bold text-slate-500 mb-1">Servicio de Interés</label>
-                            <select id="servicio" name="entry.839337160" class="w-full px-4 py-3 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-indigo-500 bg-white">
+                            <select id="servicio" class="w-full px-4 py-3 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-indigo-500 bg-white">
                                 <option value="Landing Page/Web">Landing Page / Web</option>
                                 <option value="Manejo de Redes">Manejo de Redes</option>
                                 <option value="Bots y Automatizacion">Bots y Automatización</option>
@@ -242,23 +241,26 @@
             submitBtn.disabled = true;
             btnText.innerHTML = '<span class="spinner"></span> Sincronizando...';
 
-            // Preparar los datos
-            const formData = new FormData();
-            formData.append('entry.2005620554', document.getElementById('nombre').value);
-            formData.append('entry.1045781291', document.getElementById('email').value);
-            formData.append('entry.1166974658', document.getElementById('whatsapp').value);
-            formData.append('entry.839337160', document.getElementById('servicio').value);
+            // Preparar los datos usando URLSearchParams para asegurar el formato correcto
+            const params = new URLSearchParams();
+            params.append('entry.2005620554', document.getElementById('nombre').value);
+            params.append('entry.1045781291', document.getElementById('email').value);
+            params.append('entry.1166974658', document.getElementById('whatsapp').value);
+            params.append('entry.839337160', document.getElementById('servicio').value);
 
             try {
-                // Envío mediante fetch con modo no-cors (específico para Google Forms)
+                // Envío mediante fetch con modo no-cors y enviando el string de parámetros
                 await fetch(GOOGLE_FORM_URL, {
                     method: 'POST',
                     mode: 'no-cors',
-                    body: formData
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: params.toString()
                 });
 
-                // Google no devuelve respuesta exitosa en no-cors, pero el dato llega.
-                // Mostramos el modal de éxito inmediatamente.
+                // Google no devuelve respuesta exitosa en no-cors por temas de seguridad, 
+                // pero si los IDs son correctos, el dato llega.
                 successModal.style.display = 'flex';
                 form.reset();
             } catch (error) {
